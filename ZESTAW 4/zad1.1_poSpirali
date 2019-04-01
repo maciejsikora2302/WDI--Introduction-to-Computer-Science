@@ -1,0 +1,51 @@
+#include <iostream>
+using namespace std;
+const int A=10;
+int main(){
+    int tab[A][A];                  //pierwsza wartosc to numer wiersza a druga to numer kolumny
+    int k=0,w=0;
+
+    //for(int i=0;i<A;i++) tab[0][i]=1;
+    for(int i=0;i<A;i++){
+        for(int j=0;j<A;j++){
+            tab[j][i]=0;
+        }
+    }
+    for(int i=0;i<A;i++){
+        for(int j=0;j<A;j++){
+            cout<<tab[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+    tab[0][0]=1;
+    int i=2;
+    while(i<=A*A){
+        while(tab[w][k+1]==0 && k+1<A){
+            tab[w][k+1]=i;
+            i++;
+            k++;
+        }
+        while(tab[w+1][k]==0 && w+1<A){
+            tab[w+1][k]=i;
+            i++;
+            w++;
+        }
+        while(tab[w][k-1]==0 && k-1>=0){
+            tab[w][k-1]=i;
+            i++;
+            k--;
+        }
+        while(tab[w-1][k]==0 && w-1>=0){
+            tab[w-1][k]=i;
+            i++;
+            w--;
+        }
+    }
+    cout<<endl<<endl;
+    for(int i=0;i<A;i++){
+        for(int j=0;j<A;j++){
+            cout<<tab[i][j]<<"\t";
+        }
+        cout<<endl;
+    }
+}

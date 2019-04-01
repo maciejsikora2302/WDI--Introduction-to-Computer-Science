@@ -1,0 +1,19 @@
+#include <iostream>
+#include <string>
+using namespace std;
+string podst(int n, int p){
+    string sl="",sl2="";
+    while(n>0){
+        sl+=(char)(n%p + 48);
+        n/=p;
+    }
+    for(int i=sl.size()-1;i>=0;i--){
+        sl2+=sl[i];
+    }
+    return sl2;
+}
+int main(){
+    int n, pod;
+    cin>>n>>pod;
+    cout<<podst(n, pod);
+}

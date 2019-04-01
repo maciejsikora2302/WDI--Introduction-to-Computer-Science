@@ -1,0 +1,36 @@
+#include <iostream>
+using namespace std;
+int main(){
+    int n,p=2;
+    cin>>n;
+    int a=1,b=1;
+    while(b<n){
+        p++;
+        int c=b;
+        b+=a;
+        a=c;
+    }
+    int tab[p];
+    a=1;
+    b=1;
+    tab[0]=1;
+    tab[1]=1;
+    for(int i=2;i<p;i++){
+        int c=b;
+        b+=a;
+        a=c;
+        tab[i]=b;
+    }
+    bool znalazlo=false;
+    for(int i=0;i<p;i++){
+        for(int j=0;j<p;j++){
+            if(tab[i]*tab[j]==n && !znalazlo){
+                cout<<"ZNALEZIONE "<<tab[i]<<" "<<tab[j];
+                znalazlo=true;
+            }
+        }
+    }
+    if(!znalazlo){
+        cout<<"NIE ZNALAZLO";
+    }
+}
